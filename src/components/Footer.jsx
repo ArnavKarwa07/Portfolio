@@ -91,7 +91,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="mailto:akarwa@umass.edu"
+            href="mailto:arnavkarwa07@gmail.com"
             style={{
               color: document.body.classList.contains("dark")
                 ? "#e0e0e0"
