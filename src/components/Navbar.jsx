@@ -2,92 +2,160 @@ import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        padding: scrolled ? "1rem 2rem" : "1.5rem 2rem",
-        transition: "all 0.3s ease",
-        zIndex: 1000,
-        backgroundColor: scrolled
-          ? document.body.classList.contains("dark")
-            ? "#121212"
-            : "#ffffff"
-          : "transparent",
-        boxShadow: scrolled ? "0 4px 10px rgba(0, 0, 0, 0.1)" : "none",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        <a
-          href="#"
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-            textDecoration: "none",
-            color: document.body.classList.contains("dark")
-              ? "#e0e0e0"
-              : "#333333",
-          }}
-        >
-          AK
-        </a>
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
-        <div
+  const navItems = [
+    "Home",
+    "About",
+    "Experience",
+    "Skills",
+    "Projects",
+    "Contact",
+  ];
+
+  return (
+    <header className={`header ${scrolled ? "scrolled" : ""}`}>
+      <div className="container">
+        <nav
           style={{
             display: "flex",
-            gap: "2rem",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          {["Home", "About", "Experience", "Skills", "Projects", "Contact"].map(
-            (item) => (
+          <a
+            href="#"
+            className="logo"
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: "bold",
+              textDecoration: "none",
+              color: "currentColor",
+            }}
+          >
+            AK
+          </a>
+
+          {/* Desktop Navigation */}
+          <div
+            className="nav-links desktop-nav"
+            style={{
+              display: window.innerWidth > 768 ? "flex" : "none",
+              gap: "1rem",
+            }}
+          >
+            {navItems.map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                style={{
-                  textDecoration: "none",
-                  color: document.body.classList.contains("dark")
-                    ? "#e0e0e0"
-                    : "#333333",
-                  fontWeight: "500",
-                  transition: "color 0.3s ease",
-                }}
-                onMouseOver={(e) => (e.target.style.color = "#4361ee")}
-                onMouseOut={(e) =>
-                  (e.target.style.color = document.body.classList.contains(
-                    "dark"
-                  )
-                    ? "#e0e0e0"
-                    : "#333333")
-                }
+                className="nav-link"
               >
                 {item}
               </a>
-            )
-          )}
-        </div>
+            ))}
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div
+            className="mobile-toggle"
+            style={{
+              display: window.innerWidth <= 768 ? "block" : "none",
+              cursor: "pointer",
+            }}
+            onClick={toggleMobileMenu}
+          >
+            <div
+              style={{
+                width: "25px",
+                height: "3px",
+                backgroundColor: "currentColor",
+                margin: "5px 0",
+                transition: "all 0.3s ease",
+                transform: mobileMenuOpen
+                  ? "rotate(45deg) translate(5px, 5px)"
+                  : "none",
+              }}
+            ></div>
+            <div
+              style={{
+                width: "25px",
+                height: "3px",
+                backgroundColor: "currentColor",
+                margin: "5px 0",
+                transition: "all 0.3s ease",
+                opacity: mobileMenuOpen ? 0 : 1,
+              }}
+            ></div>
+            <div
+              style={{
+                width: "25px",
+                height: "3px",
+                backgroundColor: "currentColor",
+                margin: "5px 0",
+                transition: "all 0.3s ease",
+                transform: mobileMenuOpen
+                  ? "rotate(-45deg) translate(5px, -5px)"
+                  : "none",
+              }}
+            ></div>
+          </div>
+        </nav>
       </div>
-    </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div
+          className="mobile-menu"
+          style={{
+            position: "absolute",
+            top: "100%",
+            right: 0,
+            minWidth: "200px",
+            padding: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            zIndex: 99,
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+            transition: "all 0.8s ease",
+          }}
+        >
+          {navItems.map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              onClick={() => setMobileMenuOpen(false)}
+              className="nav-link"
+              style={{
+                padding: "0.5rem 0",
+                textDecoration: "none",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+                color: "currentColor",
+              }}
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
   );
 };
 

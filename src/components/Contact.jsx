@@ -37,16 +37,7 @@ const Contact = () => {
     <section id="contact" className="section">
       <div className="container">
         <h2 className="section-title">Contact Me</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "3rem",
-            "@media (max-width: 768px)": {
-              gridTemplateColumns: "1fr",
-            },
-          }}
-        >
+        <div className="ContactGrid">
           <div>
             <h3
               style={{
