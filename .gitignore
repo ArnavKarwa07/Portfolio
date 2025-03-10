@@ -1,63 +1,24 @@
-# Node.js dependencies
-node_modules/
-npm-debug.log
-yarn-error.log
-package-lock.json
-
-# Environment variables
-.env
-config/dotenv.js
-
 # Logs
-logs/
+logs
 *.log
-logfile*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Build files
-dist/
-build/
-.vite/
+node_modules
+dist
+dist-ssr
+*.local
 
-# Editor & OS-specific files
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-.vscode/
-.idea/
-*.swp
-Thumbs.db
-
-# Backend-specific
-backend/node_modules/
-backend/package-lock.json
-
-# Frontend-specific
-frontend/node_modules/
-frontend/package-lock.json
-frontend/dist/
-frontend/build/
-frontend/.env.local
-
-# Backend
-backend/.env
-backend/.env.local
-backend/tmp/
-backend/.DS_Store
-
-# Frontend
-frontend/.env.production
-frontend/.env.development
-frontend/.cache/
-frontend/.turbo/
-
-# Testing & Debugging
-coverage/
-*.test.js
-*.spec.js
-jest.config.js
-cypress/
-
-# System Files
-*.bak
-*.tmp
-*.swo
-*.swn
-*.swp
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
