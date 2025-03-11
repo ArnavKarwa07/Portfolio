@@ -51,8 +51,7 @@ const Skills = () => {
         "Tableau",
         "Microsoft Power BI",
         "Data Analysis",
-        "Statistical Data Analysis",
-        "Data Visualization",
+        "Statistics",
       ],
     },
     {
