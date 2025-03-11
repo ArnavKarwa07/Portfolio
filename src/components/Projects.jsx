@@ -5,7 +5,8 @@ const Projects = () => {
       title: "Stock Market Predictor",
       description:
         "7-day stock market predictor utilizing advanced machine learning techniques and sentiment analysis.",
-      image: "src/assets/stock-market-prediction.jpg",
+      image:
+        "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       github: "https://github.com/ArnavKarwa07/Stock-Market-Predictor",
       tags: ["Keras", "NLTK", "LSTM", "Python", "Pandas"],
     },
@@ -13,7 +14,8 @@ const Projects = () => {
       title: "Amazon Smartphone Dataset Analysis",
       description:
         "Exploring Amazon Top Smartphones 2021, including data preprocessing, handling missing values, outliers, and visualization.",
-      image: "src/assets/smartphone_data_analysis.jpg",
+      image:
+        "https://images.pexels.com/photos/31059294/pexels-photo-31059294/free-photo-of-close-up-of-modern-smartphone-and-laptop.jpeg?auto=compress&cs=tinysrgb&w=600",
       github: "https://github.com/ArnavKarwa07/Amazon_Smartphone_Data_Analysis",
       tags: ["Numpy", "Pandas", "Jupyter", "Scikit-learn"],
     },
@@ -21,7 +23,8 @@ const Projects = () => {
       title: "Youtube Dislikes Dataset Analysis",
       description:
         "Exploring trends, video popularity, and user engagement using Python, Pandas, and Seaborn.",
-      image: "src/assets/youtube_dislikes.jpg",
+      image:
+        "https://images.unsplash.com/photo-1521302200778-33500795e128?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHlvdXR1YmUlMjBkaXNsaWtlc3xlbnwwfHwwfHx8MA%3D%3D",
       github: "https://github.com/ArnavKarwa07/Youtube_Dislikes_Data_Analysis",
       tags: ["Jupyter", "Pandas", "Seaborn", "Matplotlib", "Python"],
     },
@@ -29,7 +32,8 @@ const Projects = () => {
       title: "Handwritten Number Identifier",
       description:
         "Identifying handwritten numbers using Convolutional Neural Networks (CNN) with Keras and Tensorflow.",
-      image: "src/assets/handwritten_numbers.avif",
+      image:
+        "https://images.unsplash.com/photo-1520413766594-6e635f8d9908?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhhbmR3cml0dGVuJTIwbnVtYmVyc3xlbnwwfHwwfHx8MA%3D%3D",
       github: "https://github.com/ArnavKarwa07/Handwritten_Number_Identifier",
       tags: ["Keras", "Tensorflow", "Seaborn", "Numpy", "Python"],
     },
@@ -37,7 +41,8 @@ const Projects = () => {
       title: "Pharmacy Management System",
       description:
         "Pharmacy Management System using Tkinter & MySQL for inventory and order management.",
-      image: "src/assets/pharmacy_management.avif",
+      image:
+        "https://images.unsplash.com/photo-1576602976047-174e57a47881?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       github: "https://github.com/ArnavKarwa07/Pharmacy-Management-system",
       tags: ["Python", "MySQL", "Tkinter", "PL/SQL"],
     },
@@ -45,14 +50,16 @@ const Projects = () => {
       title: "Inventory Management System",
       description:
         "Object-Oriented Inventory Management System with File I/O and Low Stock Report Generation.",
-      image: "src/assets/Inventory_management.avif",
+      image:
+        "https://images.unsplash.com/photo-1709804668113-8b2453ae129a?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       github: "https://github.com/ArnavKarwa07/Inventory-Mangement-using-Cpp",
       tags: ["C++", "OOP", "File Handling"],
     },
     {
       title: "Restuarant Menu ordering with Bill splitting",
       description: "Menu ordering system with Bill splitting feature.",
-      image: "src/assets/ttmm.webp",
+      image:
+        "https://images.pexels.com/photos/4921260/pexels-photo-4921260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       github: "https://github.com/ArnavKarwa07/RESTAURANT-TTMM",
       tags: ["HTML", "CSS", "Javascript", "PHP", "MySQL", "PL/SQL"],
     },

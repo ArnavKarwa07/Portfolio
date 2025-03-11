@@ -8,7 +8,7 @@ const About = () => {
         <div className="about-content">
           <div className="about-image-container">
             <img
-              src="src/assets/1738399960837.jpeg"
+              src="src\ME.jpeg"
               alt="Arnav Karwa"
               className="profile-image"
             />
