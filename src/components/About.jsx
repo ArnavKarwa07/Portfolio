@@ -8,7 +8,7 @@ const About = () => {
         <div className="about-content">
           <div className="about-image-container">
             <img
-              src="https://media.licdn.com/dms/image/v2/D5603AQFT8myvKs4M4Q/profile-displayphoto-shrink_800_800/B56ZTAtkvmGQAc-/0/1738399960837?e=1747267200&v=beta&t=WG55ofupP-zKxTK4mmprHOYjC5yabm93f8DVeE8rDQA"
+              src="https://i.imgur.com/NV1Jajw.jpeg"
               alt="Arnav Karwa"
               className="profile-image"
             />
@@ -42,14 +42,6 @@ const About = () => {
                 <p>Pune, India</p>
               </div>
             </div>
-            <a
-              href="Portfolio/blob/main/src/Resume.pdf"
-              target="_blank"
-              className="download-button"
-              rel="noopener noreferrer"
-            >
-              Download Resume
-            </a>
           </div>
         </div>
       </div>
