@@ -43,7 +43,7 @@ const About = () => {
               </div>
             </div>
             <a
-              href="/Your_Resume.pdf"
+              href="src/Resume.pdf"
               target="_blank"
               className="download-button"
               rel="noopener noreferrer"
