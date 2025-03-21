@@ -8,7 +8,7 @@ const About = () => {
         <div className="about-content">
           <div className="about-image-container">
             <img
-              src="src\assets\ME.jpeg"
+              src="src/assets/ME.jpeg"
               alt="Arnav Karwa"
               className="profile-image"
             />
@@ -44,7 +44,7 @@ const About = () => {
             </div>
             <div className="resume-download">
               <a
-                href="src\assets\Arnav_Karwa_Resume.pdf"
+                href="src/assets/Arnav_Karwa_Resume.pdf"
                 download
                 className="download-resume-btn"
               >
