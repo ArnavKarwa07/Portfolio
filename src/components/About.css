@@ -93,3 +93,71 @@
     margin-bottom: 2rem;
   }
 }
+
+.resume-download {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.download-resume-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25);
+  border: 2px solid #3b82f6;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-resume-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.download-resume-btn:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+}
+
+.download-resume-btn:hover::before {
+  transform: translateX(0);
+}
+
+.download-resume-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+.btn-text {
+  font-size: 1rem;
+  z-index: 2;
+}
+
+@media (max-width: 767px) {
+  .resume-download {
+    justify-content: center;
+  }
+}
