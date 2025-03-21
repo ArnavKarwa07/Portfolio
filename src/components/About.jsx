@@ -42,7 +42,7 @@ const About = () => {
                 <p>Pune, India</p>
               </div>
             </div>
-            <div className="resume-download">
+            {/* <div className="resume-download">
               <a
                 href="/assets/Arnav_Karwa_Resume.pdf"
                 download="Arnav_Karwa_Resume.pdf"
@@ -51,7 +51,7 @@ const About = () => {
                 <span className="btn-icon">📄</span>
                 <span className="btn-text">Download Resume</span>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
