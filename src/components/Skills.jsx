@@ -55,16 +55,18 @@ const Skills = () => {
       ],
     },
     {
-      title: "Machine Learning",
+      title: "AI & Machine Learning",
       skills: [
         "TensorFlow",
         "Keras",
         "PyTorch",
         "Scikit-learn",
         "Deep Learning",
-        "Machine Learning",
-        "Artificial Intelligence (AI)",
+        "NLP",
         "LSTM",
+        "LangChain",
+        "Ollama",
+        "Langgraph",
       ],
     },
     {

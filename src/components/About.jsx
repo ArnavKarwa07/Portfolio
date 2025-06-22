@@ -17,14 +17,14 @@ const About = () => {
             <p className="about-paragraph">
               I'm a Computer Science and Engineering (AI & Data Science) student
               at MIT-WPU, passionate about software development and data
-              science. With expertise in full-stack development and AI-driven
-              analytics, I specialize in building scalable applications and
-              predictive models.
+              science. With expertise in Gen AI, full-stack development and
+              AI-driven analytics, I specialize in building scalable
+              applications and predictive models.
             </p>
             <p className="about-paragraph">
-              Currently, I'm a Software Developer at Integrated Active
-              Monitoring Pvt. Ltd. (IAM), where I work as a Full Stack Developer
-              and Data Analyst.
+              Currently, I'm an Intern at Harbinger Group, working as a Gen AI
+              developer, i've previously worled as a Software Developer at
+              Integrated Active Monitoring Pvt. Ltd. (IAM)
             </p>
             <p className="about-paragraph">
               Beyond coding, I'm a Black Belt in Karate with international

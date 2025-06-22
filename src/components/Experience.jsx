@@ -1,9 +1,23 @@
 const Experience = () => {
   const experiences = [
+        {
+      title: "Harbinger Group",
+      role: "Intern",
+      period: "June 2025 - Present",
+      description:
+        "Working as a Gen AI developer intern, focusing on building and deploying AI models. Involved in developing AI-driven solutions, enhancing model performance, and integrating AI capabilities into existing systems.",
+      skills: [
+        "Python",
+        "Langgraph",
+        "LangChain",
+        "Ollama",
+        "SQL",
+      ],
+    },
     {
       title: "Integrated Active Monitoring Pvt. Ltd. (IAM)",
-      role: "Software Engineer Intern",
-      period: "Jan 2025 - Present",
+      role: "Software Developer Intern",
+      period: "Jan 2025 - April 2025",
       description:
         "Lead & solo developer for a sales web app, managing full-stack development with React.js, Angular, Redux, FastAPI, and Django. Optimized database performance by 500%, improved system stability, and built data visualization solutions with Pandas. Implemented authentication, API security, and access controls.",
       skills: [

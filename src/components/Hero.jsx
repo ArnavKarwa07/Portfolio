@@ -64,7 +64,7 @@ const Hero = () => {
             fontWeight: "600",
           }}
         >
-          Full Stack Developer & Data Scientist
+          Gen AI | Data Science | Full Stack
         </h2>
         <p
           style={{
