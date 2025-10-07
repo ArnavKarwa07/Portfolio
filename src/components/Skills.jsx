@@ -1,148 +1,157 @@
+import { motion } from "framer-motion";
+
 const Skills = () => {
   const skillCategories = [
     {
       title: "Programming Languages",
-      skills: [
-        "JavaScript",
-        "Python",
-        "C++",
-        "C",
-        "HTML/CSS",
-        "TypeScript",
-        "SQL",
-        "PL/SQL",
-        "PHP",
-      ],
+      skills: {
+        Expert: ["Python", "SQL", "JavaScript", "HTML/CSS"],
+        Intermediate: ["C++", "PL/SQL"],
+        Beginner: ["C", "TypeScript", "PHP"],
+      },
     },
     {
       title: "Frontend Development",
-      skills: [
-        "React",
-        "React Hooks",
-        "React Native",
-        "Angular",
-        "AngularJS",
-        "Tailwind CSS",
-        "Bootstrap",
-        "Redux.js",
-      ],
+      skills: {
+        Proficient: ["React", "Tailwind CSS"],
+        Beginner: ["Next.js", "React Native", "Bootstrap"],
+      },
     },
     {
-      title: "Backend & Databases",
-      skills: [
-        "Node.js",
-        "Express",
-        "Django",
-        "FastAPI",
-        "REST APIs",
-        "SQLAlchemy",
-        "SQLite",
-        "PostgreSQL",
-        "MongoDB",
-        "MySQL",
-      ],
+      title: "Backend Development",
+      skills: {
+        Intermediate: ["Node.js", "Express", "Django", "Flask"],
+        Proficient: ["FastAPI", "REST APIs", "SQLAlchemy", "SQLite"],
+      },
     },
     {
-      title: "Data Science",
-      skills: [
-        "NumPy",
-        "Pandas",
-        "Matplotlib",
-        "Tableau",
-        "Microsoft Power BI",
-        "Data Analysis",
-        "Statistics",
-      ],
+      title: "Data Science / Machine Learning",
+      skills: {
+        Proficient: ["Pandas", "NumPy", "Scikit-learn", "Matplotlib"],
+        Intermediate: [
+          "TensorFlow",
+          "Keras",
+          "PyTorch",
+          "Machine Learning",
+          "Deep Learning",
+          "AI",
+          "Tableau",
+          "Power BI",
+          "Data Visualization",
+        ],
+      },
     },
     {
-      title: "AI & Machine Learning",
-      skills: [
-        "TensorFlow",
-        "Keras",
-        "PyTorch",
-        "Scikit-learn",
-        "Deep Learning",
-        "NLP",
-        "LSTM",
-        "LangChain",
-        "Ollama",
-        "Langgraph",
-      ],
+      title: "Databases",
+      skills: {
+        Proficient: ["MySQL", "PostgreSQL"],
+        Intermediate: ["MongoDB", "SQLite", "InfluxDB"],
+      },
     },
     {
       title: "Developer Tools",
-      skills: [
-        "Git",
-        "GitHub",
-        "Docker",
-        "AWS",
-        "Postman API",
-        "Jupyter",
-        "Firebase",
-      ],
+      skills: {
+        Proficient: ["Git", "GitHub", "Jupyter Notebook"],
+        Intermediate: ["Postman"],
+      },
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const getLevelColor = (level) => {
+    switch (level) {
+      case "Expert":
+        return "var(--agent-cyan)";
+      case "Proficient":
+        return "var(--agent-blue)";
+      case "Intermediate":
+        return "var(--agent-purple)";
+      case "Beginner":
+        return "var(--neural-orange)";
+      default:
+        return "var(--text-secondary)";
+    }
+  };
+
   return (
-    <section id="skills" className="section">
+    <section id="skills" className="section-padding">
       <div className="container">
-        <h2 className="section-title">Skills & Technologies</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "2rem",
-          }}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
         >
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="card"
-              style={{
-                padding: "2rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.2rem",
-                  marginBottom: "1.5rem",
-                  color: "#4361ee",
-                  textAlign: "center",
-                }}
+          <motion.h2
+            variants={itemVariants}
+            className="section-title gradient-text"
+          >
+            Technical Skills
+          </motion.h2>
+
+          <div className="skills-grid">
+            {skillCategories.map((category, categoryIndex) => (
+              <motion.div
+                key={categoryIndex}
+                variants={itemVariants}
+                className="skill-category-card"
               >
-                {category.title}
-              </h3>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.7rem",
-                  justifyContent: "center",
-                }}
-              >
-                {category.skills.map((skill, idx) => (
-                  <span
-                    key={idx}
-                    style={{
-                      backgroundColor: document.body.classList.contains("dark")
-                        ? "#2a2a2a"
-                        : "#e5e5e5",
-                      color: document.body.classList.contains("dark")
-                        ? "#e0e0e0"
-                        : "#333333",
-                      padding: "0.5rem 1rem",
-                      borderRadius: "20px",
-                      fontSize: "0.9rem",
-                      display: "inline-block",
-                    }}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                <h3 className="skill-category-title">{category.title}</h3>
+
+                <div className="skill-levels">
+                  {Object.entries(category.skills).map(([level, skillList]) => (
+                    <div key={level} className="skill-level-group">
+                      <h4
+                        className="skill-level-title"
+                        style={{ color: getLevelColor(level) }}
+                      >
+                        {level}:
+                      </h4>
+                      <div className="skill-tags">
+                        {skillList.map((skill, skillIndex) => (
+                          <motion.span
+                            key={skillIndex}
+                            className="skill-tag"
+                            style={{
+                              borderColor: getLevelColor(level),
+                              color: getLevelColor(level),
+                            }}
+                            whileHover={{
+                              scale: 1.05,
+                              boxShadow: `0 0 15px ${getLevelColor(level)}40`,
+                            }}
+                          >
+                            {skill}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

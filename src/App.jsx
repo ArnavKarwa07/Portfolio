@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -7,49 +8,62 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import Loading from "./components/Loading";
-import ThemeToggle from "./components/ThemeToggle";
+import LoadingScreen from "./components/LoadingScreen";
+import ParticleBackground from "./components/ParticleBackground";
+import ScrollProgress from "./components/ScrollProgress";
+import "./App.css";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [theme, setTheme] = useState("dark");
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 3000);
 
-    // Get theme from localStorage if available
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-    document.body.className = savedTheme;
+    // Intersection Observer for active sections
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
 
-    return () => clearTimeout(timer);
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.body.className = newTheme;
-    localStorage.setItem("theme", newTheme);
-  };
-
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
-    <div className="App">
-      <Navbar />
-      <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
+
+      {!loading && (
+        <div className="app">
+          <ParticleBackground />
+          <ScrollProgress />
+          <Navbar activeSection={activeSection} />
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Skills />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 

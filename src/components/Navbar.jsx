@@ -1,161 +1,150 @@
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+const Navbar = ({ activeSection }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    "Home",
-    "About",
-    "Experience",
-    "Skills",
-    "Projects",
-    "Contact",
+    { id: "hero", label: "HOME" },
+    { id: "about", label: "ABOUT" },
+    { id: "experience", label: "EXPERIENCE" },
+    { id: "skills", label: "SKILLS" },
+    { id: "projects", label: "PROJECTS" },
+    { id: "contact", label: "CONTACT" },
   ];
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <header className={`header ${scrolled ? "scrolled" : ""}`}>
-      <div className="container">
-        <nav
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
+    <motion.nav
+      className="cyber-navbar"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="nav-container">
+        <motion.div
+          className="nav-logo"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <a
-            href="#"
-            className="logo"
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              textDecoration: "none",
-              color: "currentColor",
-            }}
-          >
-            AK
-          </a>
-
-          {/* Desktop Navigation */}
-          <div
-            className="nav-links desktop-nav"
-            style={{
-              display: window.innerWidth > 768 ? "flex" : "none",
-              gap: "1rem",
-            }}
-          >
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="nav-link"
-              >
-                {item}
-              </a>
-            ))}
+          <div className="logo-content">
+            <span className="logo-bracket">&lt;</span>
+            <span className="logo-text">ARNAV</span>
+            <span className="logo-bracket">/&gt;</span>
           </div>
+          <div className="logo-scanlines"></div>
+        </motion.div>
 
-          {/* Mobile Menu Toggle */}
-          <div
-            className="mobile-toggle"
-            style={{
-              display: window.innerWidth <= 768 ? "block" : "none",
-              cursor: "pointer",
-            }}
-            onClick={toggleMobileMenu}
-          >
-            <div
-              style={{
-                width: "25px",
-                height: "3px",
-                backgroundColor: "currentColor",
-                margin: "5px 0",
-                transition: "all 0.3s ease",
-                transform: mobileMenuOpen
-                  ? "rotate(45deg) translate(5px, 5px)"
-                  : "none",
-              }}
-            ></div>
-            <div
-              style={{
-                width: "25px",
-                height: "3px",
-                backgroundColor: "currentColor",
-                margin: "5px 0",
-                transition: "all 0.3s ease",
-                opacity: mobileMenuOpen ? 0 : 1,
-              }}
-            ></div>
-            <div
-              style={{
-                width: "25px",
-                height: "3px",
-                backgroundColor: "currentColor",
-                margin: "5px 0",
-                transition: "all 0.3s ease",
-                transform: mobileMenuOpen
-                  ? "rotate(-45deg) translate(5px, -5px)"
-                  : "none",
-              }}
-            ></div>
-          </div>
-        </nav>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div
-          className="mobile-menu"
-          style={{
-            position: "absolute",
-            top: "100%",
-            right: 0,
-            minWidth: "200px",
-            padding: "1rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            zIndex: 99,
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-            transition: "all 0.8s ease",
-          }}
-        >
-          {navItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setMobileMenuOpen(false)}
-              className="nav-link"
-              style={{
-                padding: "0.5rem 0",
-                textDecoration: "none",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-                color: "currentColor",
-              }}
+        {/* Desktop Navigation */}
+        <div className="nav-links desktop-nav">
+          {navItems.map((item, index) => (
+            <motion.button
+              key={item.id}
+              className={`nav-link ${
+                activeSection === item.id ? "active" : ""
+              }`}
+              onClick={() => scrollToSection(item.id)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
             >
-              {item}
-            </a>
+              <span className="nav-glitch" data-text={item.label}>
+                {item.label}
+              </span>
+              {activeSection === item.id && (
+                <motion.div
+                  className="nav-indicator"
+                  layoutId="nav-indicator"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </motion.button>
           ))}
         </div>
+
+        {/* Mobile Menu Toggle */}
+        <motion.button
+          className="mobile-menu-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          whileTap={{ scale: 0.95 }}
+        >
+          <div className={`cyber-hamburger ${isMobileMenuOpen ? "open" : ""}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </motion.button>
+      </div>
+
+      {/* Neural Network Background */}
+      <div className="neural-network">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
+            key={i}
+            className="neural-node"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="mobile-nav"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            <div className="mobile-nav-header">
+              <div className="mobile-nav-title">NAVIGATION</div>
+              <div className="mobile-nav-grid"></div>
+            </div>
+            {navItems.map((item, index) => (
+              <motion.button
+                key={item.id}
+                className={`mobile-nav-link ${
+                  activeSection === item.id ? "active" : ""
+                }`}
+                onClick={() => scrollToSection(item.id)}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ x: 10 }}
+              >
+                <span className="mobile-nav-number">0{index + 1}</span>
+                <span className="mobile-nav-text">{item.label}</span>
+                <div className="mobile-nav-line"></div>
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <motion.div
+          className="mobile-menu-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
       )}
-    </header>
+    </motion.nav>
   );
 };
 

@@ -1,210 +1,210 @@
+import { motion } from "framer-motion";
+import { useState } from "react";
+
 const Projects = () => {
-  // Based on GitHub repositories
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  // Original project data based on actual GitHub repositories
   const projects = [
     {
       title: "Stock Market Predictor",
       description:
-        "7-day stock market predictor utilizing advanced machine learning techniques and sentiment analysis.",
+        "A 7-day stock market prediction system using LSTM neural networks and sentiment analysis. Built with Python, Keras, and data analysis libraries.",
       image:
-        "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?w=600&auto=format&fit=crop&q=60",
       github: "https://github.com/ArnavKarwa07/Stock-Market-Predictor",
-      tags: ["Keras", "NLTK", "LSTM", "Python", "Pandas"],
+      demo: "",
+      tags: ["Python", "LSTM", "Keras", "Pandas", "Data Analysis"],
+      category: "data",
     },
     {
-      title: "Amazon Smartphone Dataset Analysis",
+      title: "Amazon Smartphone Data Analysis",
       description:
-        "Exploring Amazon Top Smartphones 2021, including data preprocessing, handling missing values, outliers, and visualization.",
+        "Comprehensive smartphone data analysis project using machine learning techniques. Analyzes pricing trends, features, and customer preferences.",
       image:
-        "https://images.pexels.com/photos/31059294/pexels-photo-31059294/free-photo-of-close-up-of-modern-smartphone-and-laptop.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=60",
       github: "https://github.com/ArnavKarwa07/Amazon_Smartphone_Data_Analysis",
-      tags: ["Numpy", "Pandas", "Jupyter", "Scikit-learn"],
+      demo: "",
+      tags: ["Python", "Data Analysis", "Pandas", "Scikit-learn", "Matplotlib"],
+      category: "data",
     },
     {
-      title: "Youtube Dislikes Dataset Analysis",
+      title: "YouTube Dislikes Data Analysis",
       description:
-        "Exploring trends, video popularity, and user engagement using Python, Pandas, and Seaborn.",
+        "Data analysis project examining YouTube engagement patterns and trends. Uses statistical analysis and visualization to understand user behavior.",
       image:
-        "https://images.unsplash.com/photo-1521302200778-33500795e128?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHlvdXR1YmUlMjBkaXNsaWtlc3xlbnwwfHwwfHx8MA%3D%3D",
+        "https://images.unsplash.com/photo-1521302200778-33500795e128?w=600&auto=format&fit=crop&q=60",
       github: "https://github.com/ArnavKarwa07/Youtube_Dislikes_Data_Analysis",
-      tags: ["Jupyter", "Pandas", "Seaborn", "Matplotlib", "Python"],
+      demo: "",
+      tags: ["Python", "Data Analysis", "Pandas", "Seaborn", "Statistics"],
+      category: "data",
     },
     {
       title: "Handwritten Number Identifier",
       description:
-        "Identifying handwritten numbers using Convolutional Neural Networks (CNN) with Keras and Tensorflow.",
+        "Computer vision project for recognizing handwritten digits using Convolutional Neural Networks. Implements image preprocessing and pattern recognition.",
       image:
-        "https://images.unsplash.com/photo-1520413766594-6e635f8d9908?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhhbmR3cml0dGVuJTIwbnVtYmVyc3xlbnwwfHwwfHx8MA%3D%3D",
+        "https://images.unsplash.com/photo-1520413766594-6e635f8d9908?w=600&auto=format&fit=crop&q=60",
       github: "https://github.com/ArnavKarwa07/Handwritten_Number_Identifier",
-      tags: ["Keras", "Tensorflow", "Seaborn", "Numpy", "Python"],
+      demo: "",
+      tags: [
+        "Python",
+        "CNN",
+        "TensorFlow",
+        "Computer Vision",
+        "Image Processing",
+      ],
+      category: "ai",
     },
     {
       title: "Pharmacy Management System",
       description:
-        "Pharmacy Management System using Tkinter & MySQL for inventory and order management.",
+        "Complete pharmacy management system with inventory tracking, customer management, and billing features. Built with Python and MySQL.",
       image:
-        "https://images.unsplash.com/photo-1576602976047-174e57a47881?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1576602976047-174e57a47881?w=600&auto=format&fit=crop&q=60",
       github: "https://github.com/ArnavKarwa07/Pharmacy-Management-system",
-      tags: ["Python", "MySQL", "Tkinter", "PL/SQL"],
+      demo: "",
+      tags: ["Python", "MySQL", "Tkinter", "Database Management"],
+      category: "web",
     },
     {
-      title: "Inventory Management System",
+      title: "Inventory Management System (C++)",
       description:
-        "Object-Oriented Inventory Management System with File I/O and Low Stock Report Generation.",
+        "Object-oriented inventory management system built in C++. Features product tracking, stock management, and reporting capabilities.",
       image:
-        "https://images.unsplash.com/photo-1709804668113-8b2453ae129a?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=600&auto=format&fit=crop&q=60",
       github: "https://github.com/ArnavKarwa07/Inventory-Mangement-using-Cpp",
-      tags: ["C++", "OOP", "File Handling"],
+      demo: "",
+      tags: ["C++", "OOP", "Data Structures", "File Management"],
+      category: "systems",
     },
     {
-      title: "Restuarant Menu ordering with Bill splitting",
-      description: "Menu ordering system with Bill splitting feature.",
+      title: "Restaurant Management System",
+      description:
+        "Full-stack restaurant ordering system with table management, menu handling, and bill generation. Built with web technologies.",
       image:
-        "https://images.pexels.com/photos/4921260/pexels-photo-4921260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=60",
       github: "https://github.com/ArnavKarwa07/RESTAURANT-TTMM",
-      tags: ["HTML", "CSS", "Javascript", "PHP", "MySQL", "PL/SQL"],
+      demo: "",
+      tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+      category: "web",
     },
   ];
 
+  const categories = [
+    { id: "all", label: "All Projects" },
+    { id: "ai", label: "AI & ML" },
+    { id: "data", label: "Data Science" },
+    { id: "web", label: "Web Development" },
+    { id: "systems", label: "Systems" },
+  ];
+
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeCategory);
+
   return (
-    <section
-      id="projects"
-      className="section"
-      style={{
-        backgroundColor: document.body.classList.contains("dark")
-          ? "#0a0a0a"
-          : "#f0f0f0",
-      }}
-    >
+    <section id="projects" className="projects">
       <div className="container">
-        <h2 className="section-title">Projects</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
-            gap: "2rem",
-            "@media (max-width: 768px)": {
-              gridTemplateColumns: "1fr",
-            },
-          }}
+        <motion.h2
+          className="section-title"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="card"
-              style={{
-                overflow: "hidden",
-              }}
+          My Projects
+        </motion.h2>
+
+        <motion.div
+          className="project-filters"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              className={`filter-btn ${
+                activeCategory === category.id ? "active" : ""
+              }`}
+              onClick={() => setActiveCategory(category.id)}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "cover",
-                }}
-              />
-              <div
-                style={{
-                  padding: "1.5rem",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.3rem",
-                    marginBottom: "0.8rem",
-                  }}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  style={{
-                    marginBottom: "1.5rem",
-                    lineHeight: 1.6,
-                    opacity: 0.9,
-                  }}
-                >
-                  {project.description}
-                </p>
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.5rem",
-                    marginBottom: "1.5rem",
-                  }}
-                >
+              {category.label}
+            </button>
+          ))}
+        </motion.div>
+
+        <div className="projects-grid">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+            >
+              <div className="project-image">
+                <img src={project.image} alt={project.title} />
+              </div>
+
+              <div className="project-content">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+
+                <div className="project-tags">
                   {project.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      style={{
-                        backgroundColor: "#4361ee",
-                        color: "white",
-                        padding: "0.2rem 0.6rem",
-                        borderRadius: "20px",
-                        fontSize: "0.8rem",
-                      }}
-                    >
+                    <span key={idx} className="tag">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1rem",
-                  }}
-                >
+
+                <div className="project-links">
                   <a
                     href={project.github}
                     target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      textDecoration: "none",
-                      color: document.body.classList.contains("dark")
-                        ? "#e0e0e0"
-                        : "#333333",
-                      fontWeight: "500",
-                    }}
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                    Code
+                    GitHub
                   </a>
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary"
+                    >
+                      Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "3rem",
-          }}
+
+        <motion.div
+          className="projects-cta"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
           <a
             href="https://github.com/ArnavKarwa07?tab=repositories"
             target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary"
+            rel="noopener noreferrer"
+            className="btn btn-primary btn-large"
           >
-            View More on GitHub
+            View All Projects on GitHub
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
