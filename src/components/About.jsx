@@ -54,7 +54,7 @@ const About = () => {
 
                 <div className="image-wrapper">
                   <img
-                    src="Public/assets/ME.jpeg"
+                    src="/Portfolio/assets/ME.jpeg"
                     alt="Arnav Karwa"
                     className="about-image"
                   />

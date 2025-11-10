@@ -122,7 +122,7 @@ const Hero = () => {
                 View My Work
               </a>
               <a
-                href="/assets/Arnav_Karwa_Resume.pdf"
+                href="/Portfolio/assets/Arnav_Karwa_Resume.pdf"
                 download
                 className="btn btn-secondary"
               >
