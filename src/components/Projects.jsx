@@ -2,41 +2,116 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("featured");
 
-  // Original project data based on actual GitHub repositories
+  // Project data based on actual GitHub repositories
   const projects = [
+    {
+      title: "Agrotech",
+      description:
+        "Agriculture-focused solution that helps with smarter farming decisions using a tech-driven data/information workflow. Built with modern web technologies for data analysis and insights.",
+      image:
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/Agrotech",
+      demo: "https://agro-tech-roan.vercel.app/login",
+      tags: ["React", "Data Analysis", "Agriculture Tech", "Full-Stack"],
+      category: "web",
+      featured: true,
+    },
+    {
+      title: "Prompt Master",
+      description:
+        "Web app that reviews and optimizes prompts to improve the quality and consistency of LLM outputs. Helps users craft better AI prompts for enhanced results.",
+      image:
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/Prompt-Master",
+      demo: "https://prompt-master-sepia.vercel.app/",
+      tags: ["Python", "LLM", "AI", "Prompt Engineering"],
+      category: "ai",
+      featured: true,
+    },
+    {
+      title: "Automated EDA",
+      description:
+        "Automated exploratory data analysis tool that generates key insights, statistics, and visualizations from datasets. Streamlines data discovery and analysis workflow.",
+      image:
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/Automated_EDA",
+      demo: "",
+      tags: ["Python", "Data Analysis", "Pandas", "Visualization"],
+      category: "data",
+      featured: true,
+    },
+    {
+      title: "High Speed Face Recognition System",
+      description:
+        "Real-time face recognition system optimized for fast detection and identification. Implements advanced computer vision techniques for efficient facial analysis.",
+      image:
+        "https://images.unsplash.com/photo-1581091215367-59ab6b9314e1?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/High_Speed_Face_Recognition",
+      demo: "",
+      tags: ["Python", "OpenCV", "Computer Vision", "ML", "Face Recognition"],
+      category: "ai",
+    },
+    {
+      title: "Dynamic Personal Finance Agent",
+      description:
+        "AI-powered finance agent that tracks expenses and automates personal finance tasks with intelligent workflows. Provides smart financial insights and recommendations.",
+      image:
+        "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/Dynamic-Personal-Finance-Agent",
+      demo: "",
+      tags: ["Python", "AI Agent", "Finance", "Automation", "LLM"],
+      category: "ai",
+    },
+    {
+      title: "ClauseCraftAI",
+      description:
+        "GenAI solution that summarizes complex legal documents into easy-to-understand language. Demystifies legal content using advanced NLP and generative AI.",
+      image:
+        "https://images.unsplash.com/photo-1521790797524-b2497295b8a0?auto=format&fit=crop&w=900&q=80",
+      github:
+        "https://github.com/ArnavKarwa07/Generative_AI_for_Demystifying_Legal_Documents",
+      demo: "",
+      tags: ["JavaScript", "GenAI", "NLP", "Document Processing"],
+      category: "ai",
+    },
+    {
+      title: "AI Course Recommendation System",
+      description:
+        "Recommendation system that suggests relevant AI/tech courses based on user preferences and interest signals. Uses ML algorithms to match users with ideal learning paths.",
+      image:
+        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/AI-Course-Recommendation-System",
+      demo: "",
+      tags: [
+        "JavaScript",
+        "Machine Learning",
+        "Recommendation Engine",
+        "Education Tech",
+      ],
+      category: "web",
+    },
+    {
+      title: "Real Estate Price Predictor",
+      description:
+        "ML model to predict property prices using key housing features and location-based factors. Analyzes real estate data to forecast market values accurately.",
+      image:
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07",
+      demo: "",
+      tags: ["Python", "Machine Learning", "Scikit-learn", "Data Science"],
+      category: "data",
+    },
     {
       title: "Stock Market Predictor",
       description:
         "A 7-day stock market prediction system using LSTM neural networks and sentiment analysis. Built with Python, Keras, and data analysis libraries.",
       image:
-        "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?w=600&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?auto=format&fit=crop&w=900&q=80",
       github: "https://github.com/ArnavKarwa07/Stock-Market-Predictor",
       demo: "",
       tags: ["Python", "LSTM", "Keras", "Pandas", "Data Analysis"],
-      category: "data",
-    },
-    {
-      title: "Amazon Smartphone Data Analysis",
-      description:
-        "Comprehensive smartphone data analysis project using machine learning techniques. Analyzes pricing trends, features, and customer preferences.",
-      image:
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=60",
-      github: "https://github.com/ArnavKarwa07/Amazon_Smartphone_Data_Analysis",
-      demo: "",
-      tags: ["Python", "Data Analysis", "Pandas", "Scikit-learn", "Matplotlib"],
-      category: "data",
-    },
-    {
-      title: "YouTube Dislikes Data Analysis",
-      description:
-        "Data analysis project examining YouTube engagement patterns and trends. Uses statistical analysis and visualization to understand user behavior.",
-      image:
-        "https://images.unsplash.com/photo-1521302200778-33500795e128?w=600&auto=format&fit=crop&q=60",
-      github: "https://github.com/ArnavKarwa07/Youtube_Dislikes_Data_Analysis",
-      demo: "",
-      tags: ["Python", "Data Analysis", "Pandas", "Seaborn", "Statistics"],
       category: "data",
     },
     {
@@ -44,7 +119,7 @@ const Projects = () => {
       description:
         "Computer vision project for recognizing handwritten digits using Convolutional Neural Networks. Implements image preprocessing and pattern recognition.",
       image:
-        "https://images.unsplash.com/photo-1520413766594-6e635f8d9908?w=600&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1509099836639-18ba02e2e1ba?auto=format&fit=crop&w=900&q=80",
       github: "https://github.com/ArnavKarwa07/Handwritten_Number_Identifier",
       demo: "",
       tags: [
@@ -61,18 +136,18 @@ const Projects = () => {
       description:
         "Complete pharmacy management system with inventory tracking, customer management, and billing features. Built with Python and MySQL.",
       image:
-        "https://images.unsplash.com/photo-1576602976047-174e57a47881?w=600&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
       github: "https://github.com/ArnavKarwa07/Pharmacy-Management-system",
       demo: "",
       tags: ["Python", "MySQL", "Tkinter", "Database Management"],
-      category: "web",
+      category: "systems",
     },
     {
-      title: "Inventory Management System (C++)",
+      title: "Inventory Management System",
       description:
-        "Object-oriented inventory management system built in C++. Features product tracking, stock management, and reporting capabilities.",
+        "Object-oriented inventory management system built in C++. Features product tracking, stock management, and reporting capabilities with efficient data structures.",
       image:
-        "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=600&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1582719471137-2ff50e8c0a6b?auto=format&fit=crop&w=900&q=80",
       github: "https://github.com/ArnavKarwa07/Inventory-Mangement-using-Cpp",
       demo: "",
       tags: ["C++", "OOP", "Data Structures", "File Management"],
@@ -81,17 +156,40 @@ const Projects = () => {
     {
       title: "Restaurant Management System",
       description:
-        "Full-stack restaurant ordering system with table management, menu handling, and bill generation. Built with web technologies.",
+        "Full-stack restaurant management solution to streamline ordering, menu handling, and table/customer flow operations. Built with web technologies and databases.",
       image:
-        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=900&q=80",
       github: "https://github.com/ArnavKarwa07/RESTAURANT-TTMM",
       demo: "",
       tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
       category: "web",
     },
+    {
+      title: "YouTube Dislikes Data Analysis",
+      description:
+        "Data analysis on YouTube engagement datasets to extract trends, correlations, and meaningful insights. Statistical analysis of user engagement patterns.",
+      image:
+        "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/Youtube_Dislikes_Data_Analysis",
+      demo: "",
+      tags: ["Python", "Data Analysis", "Pandas", "Seaborn", "Statistics"],
+      category: "data",
+    },
+    {
+      title: "Amazon Smartphone Data Analysis",
+      description:
+        "Analysis of smartphone listings data to identify trends in pricing, ratings, and brand-wise performance. Comprehensive market analysis using data science techniques.",
+      image:
+        "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=900&q=80",
+      github: "https://github.com/ArnavKarwa07/Amazon_Smartphone_Data_Analysis",
+      demo: "",
+      tags: ["Python", "Data Analysis", "Pandas", "Scikit-learn", "Matplotlib"],
+      category: "data",
+    },
   ];
 
   const categories = [
+    { id: "featured", label: "Featured" },
     { id: "all", label: "All Projects" },
     { id: "ai", label: "AI & ML" },
     { id: "data", label: "Data Science" },
@@ -99,10 +197,12 @@ const Projects = () => {
     { id: "systems", label: "Systems" },
   ];
 
-  const filteredProjects =
-    activeCategory === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeCategory);
+  const filteredProjects = (() => {
+    if (activeCategory === "all") return projects;
+    if (activeCategory === "featured")
+      return projects.filter((project) => project.featured);
+    return projects.filter((project) => project.category === activeCategory);
+  })();
 
   return (
     <section id="projects" className="projects">

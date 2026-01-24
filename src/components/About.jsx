@@ -95,29 +95,27 @@ const About = () => {
 
                 <div className="panel-content">
                   <motion.h3 className="about-subtitle" variants={itemVariants}>
-                    Computer Science Student & Developer
+                    AI Developer & Full-Stack Engineer
                   </motion.h3>
 
                   <motion.p variants={itemVariants}>
-                    I'm Arnav Karwa, a passionate Computer Science and
-                    Engineering student at MIT-WPU, specializing in Artificial
-                    Intelligence and Data Science. I love building applications
-                    that solve real-world problems.
+                    I'm Arnav Karwa, a CSE (AI & DS) student at MIT-WPU focused
+                    on building intelligent, scalable products. I love turning
+                    data, AI, and design into usable tools.
                   </motion.p>
 
                   <motion.p variants={itemVariants}>
-                    With experience in both frontend and backend development, I
-                    enjoy creating full-stack applications using modern
-                    technologies like React, Node.js, Python, and various
-                    databases. I'm always eager to learn new technologies and
-                    take on challenging projects.
+                    Currently a Gen AI developer intern at Harbinger Group,
+                    shipping and tuning AI models. Previously led full-stack
+                    work at IAM, speeding up databases by 500% and delivering
+                    data-rich dashboards across React, FastAPI, and Django.
                   </motion.p>
 
                   <motion.p variants={itemVariants}>
-                    Beyond coding, I have a black belt in Karate and played
-                    basketball at the district level, which taught me
-                    discipline, teamwork, and perseverance - qualities I bring
-                    to my development work.
+                    Built 15+ projects across AI/ML, web, and data—from LLM
+                    prompt tools and finance agents to CV systems and analytics.
+                    I bring the same discipline from my black belt in Karate and
+                    district-level basketball to every build.
                   </motion.p>
 
                   <motion.div
@@ -180,7 +178,8 @@ const About = () => {
           border: 2px solid var(--neon-purple);
           border-radius: 20px;
           padding: 2rem;
-          box-shadow: 0 0 30px var(--glow-purple),
+          box-shadow:
+            0 0 30px var(--glow-purple),
             inset 0 0 30px rgba(191, 0, 255, 0.1);
         }
 
@@ -328,7 +327,8 @@ const About = () => {
           border: 2px solid var(--neon-cyan);
           border-radius: 15px;
           overflow: hidden;
-          box-shadow: 0 0 30px var(--glow-cyan),
+          box-shadow:
+            0 0 30px var(--glow-cyan),
             inset 0 0 30px rgba(0, 255, 255, 0.1);
         }
 
@@ -356,7 +356,8 @@ const About = () => {
 
         .light.active {
           background: var(--neon-green);
-          box-shadow: 0 0 10px var(--neon-green),
+          box-shadow:
+            0 0 10px var(--neon-green),
             inset 0 0 5px rgba(255, 255, 255, 0.3);
           animation: pulse 2s infinite;
         }
