@@ -1,4 +1,7 @@
+import data from "../data/data.json";
+
 const Footer = () => {
+  const { personal, footer } = data;
   const currentYear = new Date().getFullYear();
 
   return (
@@ -23,11 +26,11 @@ const Footer = () => {
         {/* Social Links with Cyber Design */}
         <div className="cyber-social-links">
           <a
-            href="https://www.linkedin.com/in/arnav-karwa/"
+            href={personal.social.linkedin}
             target="_blank"
             rel="noreferrer"
             className="cyber-link"
-            data-protocol="LINKEDIN"
+            data-protocol={footer.socialProtocols.linkedin}
           >
             <div className="link-frame">
               <svg
@@ -50,11 +53,11 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://github.com/ArnavKarwa07"
+            href={personal.social.github}
             target="_blank"
             rel="noreferrer"
             className="cyber-link"
-            data-protocol="GITHUB"
+            data-protocol={footer.socialProtocols.github}
           >
             <div className="link-frame">
               <svg
@@ -75,9 +78,9 @@ const Footer = () => {
           </a>
 
           <a
-            href="mailto:arnavkarwa07@gmail.com"
+            href={`mailto:${personal.email}`}
             className="cyber-link"
-            data-protocol="MAIL"
+            data-protocol={footer.socialProtocols.mail}
           >
             <div className="link-frame">
               <svg
@@ -102,13 +105,14 @@ const Footer = () => {
         {/* Terminal Copyright */}
         <div className="cyber-copyright">
           <div className="terminal-line">
-            <span className="prompt">root@portfolio:~$</span>
+            <span className="prompt">{footer.terminalPrompt}</span>
             <span className="command">
-              echo "© {currentYear} ARNAV_KARWA.EXE - ALL_RIGHTS_RESERVED"
+              echo "© {currentYear} {footer.copyrightName} -{" "}
+              {footer.copyrightSuffix}"
             </span>
           </div>
           <div className="output">
-            © {currentYear} ARNAV_KARWA.EXE - ALL_RIGHTS_RESERVED
+            © {currentYear} {footer.copyrightName} - {footer.copyrightSuffix}
           </div>
         </div>
 

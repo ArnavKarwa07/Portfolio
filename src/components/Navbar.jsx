@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import data from "../data/data.json";
 
 const Navbar = ({ activeSection }) => {
+  const { personal } = data;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -36,7 +38,7 @@ const Navbar = ({ activeSection }) => {
         >
           <div className="logo-content">
             <span className="logo-bracket">&lt;</span>
-            <span className="logo-text">ARNAV</span>
+            <span className="logo-text">{personal.logoText}</span>
             <span className="logo-bracket">/&gt;</span>
           </div>
           <div className="logo-scanlines"></div>

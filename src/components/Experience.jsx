@@ -1,82 +1,9 @@
 import { motion } from "framer-motion";
+import data from "../data/data.json";
 
 const Experience = () => {
-  const experiences = [
-    {
-      title: "Harbinger Group",
-      role: "AI Developer Intern",
-      period: "June 2025 - September 2025",
-      description:
-        "Currently working as a Gen AI developer intern, focusing on building and deploying advanced AI models. Involved in developing AI-driven solutions, enhancing model performance, and integrating AI capabilities into existing systems. Working with cutting-edge technologies to create intelligent applications.",
-      skills: [
-        "Python",
-        "Langgraph",
-        "LangChain",
-        "Ollama",
-        "SQL",
-        "Gen AI",
-        "FastAPI",
-        "React.js",
-      ],
-      status: "COMPLETED",
-      type: "AI Development",
-    },
-    {
-      title: "Integrated Active Monitoring Pvt. Ltd. (IAM)",
-      role: "Software Developer Intern",
-      period: "January 2025 - April 2025",
-      description:
-        "Led and solo-developed a comprehensive sales web app, managing full-stack development with React.js, Angular, Redux, FastAPI, and Django. Optimized database performance by 500%, significantly improved system stability, and built advanced data visualization solutions with Pandas. Implemented robust authentication, API security, and granular access controls.",
-      skills: [
-        "React",
-        "PostgreSQL",
-        "FastAPI",
-        "SQLAlchemy",
-        "Postman API",
-        "React Native",
-        "Redux.js",
-        "REST APIs",
-        "SQLite",
-        "Pandas",
-      ],
-      status: "COMPLETED",
-      type: "Full-Stack Development",
-    },
-    {
-      title: "Legitreach-Ad",
-      role: "AI Engineer Intern",
-      period: "November 2025 - February 2026",
-      description:
-        "Built campaign and analytics modules for a B2B ads platform. Implemented dashboards, API integrations, and performance tracking across Next.js and TypeScript with secure auth and role-based access.",
-      skills: [
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Node.js",
-        "REST APIs",
-        "Charts",
-        "FastAPI",
-      ],
-      status: "COMPLETED",
-      type: "Product Engineering",
-    },
-    {
-      title: "BoardGame Meetups Pune",
-      role: "Co-founder",
-      period: "2024 - Present",
-      description:
-        "Started a board game meetup organizing company, building a community of 6k+ people and conducting 25+ meetups. Focused on hosting, logistics, partnerships, and keeping the community engaged.",
-      skills: [
-        "Community Building",
-        "Events",
-        "Partnerships",
-        "Operations",
-        "Growth",
-      ],
-      status: "ACTIVE",
-      type: "Community",
-    },
-  ];
+  const { experience } = data;
+  const experiences = experience.items;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -113,7 +40,7 @@ const Experience = () => {
             variants={itemVariants}
             className="section-title cyber-title"
           >
-            Experience
+            {experience.sectionTitle}
           </motion.h2>
 
           <div className="experience-timeline">

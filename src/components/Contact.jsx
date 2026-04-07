@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import data from "../data/data.json";
 
 const Contact = () => {
+  const { personal, contact } = data;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,13 +25,13 @@ const Contact = () => {
 
     // Create mailto link with form data
     const subject = encodeURIComponent(
-      formData.subject || "Contact from Portfolio"
+      formData.subject || contact.form.defaultSubject,
     );
     const body = encodeURIComponent(
-      `Hi Arnav,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\nBest regards,\n${formData.name}`
+      `Hi ${personal.firstName},\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\nBest regards,\n${formData.name}`,
     );
 
-    const mailtoLink = `mailto:arnavkarwa07@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:${personal.email}?subject=${subject}&body=${body}`;
 
     // Try multiple methods to open email client
     try {
@@ -88,20 +91,17 @@ const Contact = () => {
           viewport={{ once: true }}
         >
           <motion.div variants={itemVariants} className="contact-intro">
-            <h2 className="section-title">Get In Touch</h2>
-            <p>
-              Ready to build something amazing together? I'd love to hear from
-              you. Send me a message and let's start the conversation!
-            </p>
+            <h2 className="section-title">{contact.sectionTitle}</h2>
+            <p>{contact.intro}</p>
           </motion.div>
 
           <div className="contact-content">
             <motion.div variants={itemVariants} className="contact-info">
-              <h3>Let's Connect</h3>
+              <h3>{contact.connectTitle}</h3>
 
               <div className="contact-methods">
                 <motion.a
-                  href="mailto:arnavkarwa07@gmail.com"
+                  href={`mailto:${personal.email}`}
                   className="contact-method"
                   whileHover={{ scale: 1.02, x: 5 }}
                 >
@@ -116,13 +116,17 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="method-info">
-                    <span className="method-label">Email</span>
-                    <span className="method-value">arnavkarwa07@gmail.com</span>
+                    <span className="method-label">
+                      {contact.methods[0].label}
+                    </span>
+                    <span className="method-value">
+                      {contact.methods[0].value}
+                    </span>
                   </div>
                 </motion.a>
 
                 <motion.a
-                  href="https://linkedin.com/in/arnav-karwa"
+                  href={personal.social.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="contact-method"
@@ -139,13 +143,17 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="method-info">
-                    <span className="method-label">LinkedIn</span>
-                    <span className="method-value">Connect with me</span>
+                    <span className="method-label">
+                      {contact.methods[1].label}
+                    </span>
+                    <span className="method-value">
+                      {contact.methods[1].value}
+                    </span>
                   </div>
                 </motion.a>
 
                 <motion.a
-                  href="https://github.com/ArnavKarwa07"
+                  href={personal.social.github}
                   target="_blank"
                   rel="noreferrer"
                   className="contact-method"
@@ -162,8 +170,12 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="method-info">
-                    <span className="method-label">GitHub</span>
-                    <span className="method-value">View my code</span>
+                    <span className="method-label">
+                      {contact.methods[2].label}
+                    </span>
+                    <span className="method-value">
+                      {contact.methods[2].value}
+                    </span>
                   </div>
                 </motion.a>
               </div>
@@ -174,7 +186,8 @@ const Contact = () => {
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="name">
-                      Your Name <span className="required-field">*</span>
+                      {contact.form.fields.name.label}{" "}
+                      <span className="required-field">*</span>
                     </label>
                     <input
                       type="text"
@@ -183,13 +196,14 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Enter your full name"
+                      placeholder={contact.form.fields.name.placeholder}
                     />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="email">
-                      Email Address <span className="required-field">*</span>
+                      {contact.form.fields.email.label}{" "}
+                      <span className="required-field">*</span>
                     </label>
                     <input
                       type="email"
@@ -198,14 +212,15 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="your.email@example.com"
+                      placeholder={contact.form.fields.email.placeholder}
                     />
                   </div>
                 </div>
 
                 <div className="form-group">
                   <label htmlFor="subject">
-                    Subject <span className="required-field">*</span>
+                    {contact.form.fields.subject.label}{" "}
+                    <span className="required-field">*</span>
                   </label>
                   <input
                     type="text"
@@ -214,13 +229,14 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    placeholder="What would you like to discuss?"
+                    placeholder={contact.form.fields.subject.placeholder}
                   />
                 </div>
 
                 <div className="form-group">
                   <label htmlFor="message">
-                    Message <span className="required-field">*</span>
+                    {contact.form.fields.message.label}{" "}
+                    <span className="required-field">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -229,7 +245,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="6"
-                    placeholder="Tell me about your project, ideas, or just say hello! I'd love to hear from you."
+                    placeholder={contact.form.fields.message.placeholder}
                   />
                 </div>
 
@@ -239,7 +255,7 @@ const Contact = () => {
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>Send Message</span>
+                  <span>{contact.form.submitLabel}</span>
                   <svg
                     width="20"
                     height="20"
@@ -259,18 +275,12 @@ const Contact = () => {
                     {submitStatus === "success" ? (
                       <>
                         <span className="status-icon">✓</span>
-                        <span>
-                          Thank you! Your message has been sent successfully.
-                          I'll get back to you soon!
-                        </span>
+                        <span>{contact.form.successMessage}</span>
                       </>
                     ) : (
                       <>
                         <span className="status-icon">⚠</span>
-                        <span>
-                          Sorry, there was an issue sending your message. Please
-                          try again or contact me directly.
-                        </span>
+                        <span>{contact.form.errorMessage}</span>
                       </>
                     )}
                   </motion.div>

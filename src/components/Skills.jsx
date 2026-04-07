@@ -1,61 +1,9 @@
 import { motion } from "framer-motion";
+import data from "../data/data.json";
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Programming Languages",
-      skills: {
-        Expert: ["Python", "SQL", "JavaScript", "HTML/CSS"],
-        Intermediate: ["C++", "PL/SQL"],
-        Beginner: ["C", "TypeScript", "PHP"],
-      },
-    },
-    {
-      title: "Frontend Development",
-      skills: {
-        Proficient: ["React", "Tailwind CSS"],
-        Beginner: ["Next.js", "React Native", "Bootstrap"],
-      },
-    },
-    {
-      title: "Backend Development",
-      skills: {
-        Intermediate: ["Node.js", "Express", "Django", "Flask"],
-        Proficient: ["FastAPI", "REST APIs", "SQLAlchemy", "SQLite"],
-      },
-    },
-    {
-      title: "Data Science / Machine Learning",
-      skills: {
-        Proficient: ["Pandas", "NumPy", "Scikit-learn", "Matplotlib"],
-        Intermediate: [
-          "TensorFlow",
-          "Keras",
-          "PyTorch",
-          "Machine Learning",
-          "Deep Learning",
-          "AI",
-          "Tableau",
-          "Power BI",
-          "Data Visualization",
-        ],
-      },
-    },
-    {
-      title: "Databases",
-      skills: {
-        Proficient: ["MySQL", "PostgreSQL"],
-        Intermediate: ["MongoDB", "SQLite", "InfluxDB"],
-      },
-    },
-    {
-      title: "Developer Tools",
-      skills: {
-        Proficient: ["Git", "GitHub", "Jupyter Notebook"],
-        Intermediate: ["Postman"],
-      },
-    },
-  ];
+  const { skills } = data;
+  const skillCategories = skills.categories;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -106,7 +54,7 @@ const Skills = () => {
             variants={itemVariants}
             className="section-title gradient-text"
           >
-            Technical Skills
+            {skills.sectionTitle}
           </motion.h2>
 
           <div className="skills-grid">

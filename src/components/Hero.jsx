@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import data from "../data/data.json";
 
 const Hero = () => {
+  const { personal, hero } = data;
+
   const handleEmailClick = (e) => {
     e.preventDefault();
-    const email = "arnavkarwa07@gmail.com";
-    const subject = "Portfolio Contact";
+    const email = personal.email;
+    const subject = hero.emailSubject;
     const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 
     try {
@@ -41,13 +44,7 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentRole, setCurrentRole] = useState(0);
 
-  const roles = [
-    "Software Engineer",
-    "Agentic AI Developer",
-    "Full Stack Developer",
-    "Data Analyst",
-    "Problem Solver",
-  ];
+  const roles = hero.roles;
 
   useEffect(() => {
     const fullText = roles[currentRole];
@@ -84,7 +81,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Hi, I'm <span className="name">Arnav Karwa</span>
+              {hero.titlePrefix} <span className="name">{personal.name}</span>
             </motion.h1>
 
             <motion.div
@@ -93,7 +90,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <span>I'm a </span>
+              <span>{hero.subtitlePrefix} </span>
               <span className="typing-text">
                 {displayText}
                 <span className="cursor">|</span>
@@ -106,10 +103,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Computer Science student at MIT-WPU passionate about building web
-              applications, analyzing data, and solving real-world problems
-              through technology. I enjoy working with Python, JavaScript, and
-              modern web frameworks.
+              {hero.description}
             </motion.p>
 
             <motion.div
@@ -118,15 +112,15 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <a href="#projects" className="btn btn-primary">
-                View My Work
+              <a href={hero.buttons.primaryHref} className="btn btn-primary">
+                {hero.buttons.primaryLabel}
               </a>
               <a
-                href="/Portfolio/assets/Arnav_Karwa_Resume.pdf"
+                href={personal.resumePath}
                 download
                 className="btn btn-secondary"
               >
-                Download Resume
+                {hero.buttons.resumeLabel}
               </a>
             </motion.div>
 
@@ -137,7 +131,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 1 }}
             >
               <a
-                href="https://github.com/ArnavKarwa07"
+                href={personal.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
@@ -152,7 +146,7 @@ const Hero = () => {
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com/in/arnav-karwa/"
+                href={personal.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
@@ -167,7 +161,7 @@ const Hero = () => {
                 </svg>
               </a>
               <a
-                href="mailto:arnavkarwa07@gmail.com"
+                href={`mailto:${personal.email}`}
                 onClick={handleEmailClick}
                 className="social-link"
               >

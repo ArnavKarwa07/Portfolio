@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import data from "../data/data.json";
 
 const Loading = () => {
+  const { loading } = data;
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const Loading = () => {
           letterSpacing: "2px",
         }}
       >
-        ARNAV KARWA
+        {loading.simpleDisplayName}
       </h1>
 
       <div
@@ -76,7 +78,7 @@ const Loading = () => {
           opacity: 0.8,
         }}
       >
-        Loading Portfolio {progress}%
+        {loading.simpleLoadingPrefix} {progress}%
       </p>
     </div>
   );

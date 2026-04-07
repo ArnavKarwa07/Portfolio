@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import data from "../data/data.json";
 
 const LoadingScreen = () => {
+  const { loading } = data;
   const [progress, setProgress] = useState(0);
   const [currentSystem, setCurrentSystem] = useState("INITIALIZING");
 
@@ -66,7 +68,7 @@ const LoadingScreen = () => {
         >
           <div className="logo-frame">
             <div className="logo-inner">
-              <span className="logo-text">AK</span>
+              <span className="logo-text">{loading.logoText}</span>
               <div className="scan-line-logo"></div>
             </div>
             <div className="corner-brackets">
@@ -90,8 +92,8 @@ const LoadingScreen = () => {
             <span className="command">whoami</span>
           </div>
           <div className="identity-output">
-            <div className="name-display">ARNAV_KARWA.EXE</div>
-            <div className="role-display">FULL_STACK_DEVELOPER</div>
+            <div className="name-display">{loading.displayName}</div>
+            <div className="role-display">{loading.role}</div>
           </div>
         </motion.div>
 

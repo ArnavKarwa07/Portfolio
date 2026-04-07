@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import data from "../data/data.json";
 
 const About = () => {
+  const { personal, about } = data;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,7 +39,7 @@ const About = () => {
             variants={itemVariants}
             className="section-title cyber-title"
           >
-            About Me
+            {about.sectionTitle}
           </motion.h2>
 
           <div className="about-content">
@@ -54,8 +57,8 @@ const About = () => {
 
                 <div className="image-wrapper">
                   <img
-                    src="/Portfolio/assets/ME.jpeg"
-                    alt="Arnav Karwa"
+                    src={personal.photoPath}
+                    alt={personal.name}
                     className="about-image"
                   />
                   <div className="image-overlay"></div>
@@ -63,18 +66,12 @@ const About = () => {
                 </div>
 
                 <div className="data-display">
-                  <div className="data-line">
-                    <span className="data-label">STATUS:</span>
-                    <span className="data-value">ONLINE</span>
-                  </div>
-                  <div className="data-line">
-                    <span className="data-label">LOCATION:</span>
-                    <span className="data-value">INDIA</span>
-                  </div>
-                  <div className="data-line">
-                    <span className="data-label">ROLE:</span>
-                    <span className="data-value">DEVELOPER</span>
-                  </div>
+                  {about.dataLines.map((line) => (
+                    <div className="data-line" key={line.label}>
+                      <span className="data-label">{line.label}</span>
+                      <span className="data-value">{line.value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -90,51 +87,32 @@ const About = () => {
                     <div className="light"></div>
                     <div className="light"></div>
                   </div>
-                  <span className="panel-title">PERSONAL_DATA.txt</span>
+                  <span className="panel-title">{about.panelTitle}</span>
                 </div>
 
                 <div className="panel-content">
                   <motion.h3 className="about-subtitle" variants={itemVariants}>
-                    AI Developer & Full-Stack Engineer
+                    {about.subtitle}
                   </motion.h3>
 
-                  <motion.p variants={itemVariants}>
-                    I'm Arnav Karwa, a CSE (AI & DS) student at MIT-WPU focused
-                    on building intelligent, scalable products. I love turning
-                    data, AI, and design into usable tools.
-                  </motion.p>
-
-                  <motion.p variants={itemVariants}>
-                    Currently a Gen AI developer intern at Harbinger Group,
-                    shipping and tuning AI models. Previously led full-stack
-                    work at IAM, speeding up databases by 500% and delivering
-                    data-rich dashboards across React, FastAPI, and Django.
-                  </motion.p>
-
-                  <motion.p variants={itemVariants}>
-                    Built 15+ projects across AI/ML, web, and data—from LLM
-                    prompt tools and finance agents to CV systems and analytics.
-                    I bring the same discipline from my black belt in Karate and
-                    district-level basketball to every build.
-                  </motion.p>
+                  {about.paragraphs.map((paragraph, index) => (
+                    <motion.p variants={itemVariants} key={index}>
+                      {paragraph}
+                    </motion.p>
+                  ))}
 
                   <motion.div
                     className="skills-preview"
                     variants={itemVariants}
                   >
                     <div className="skills-header">
-                      <span className="terminal-prompt">~/skills$</span>
+                      <span className="terminal-prompt">
+                        {about.skillsPreview.prompt}
+                      </span>
                       <span className="blinking-cursor">_</span>
                     </div>
                     <div className="skills-grid">
-                      {[
-                        "Python",
-                        "JavaScript",
-                        "React",
-                        "Node.js",
-                        "Data Science",
-                        "Machine Learning",
-                      ].map((skill, index) => (
+                      {about.skillsPreview.skills.map((skill, index) => (
                         <motion.span
                           key={skill}
                           className="cyber-skill"
