@@ -1,69 +1,107 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import LoadingScreen from "./components/LoadingScreen";
-import ParticleBackground from "./components/ParticleBackground";
-import ScrollProgress from "./components/ScrollProgress";
-import "./App.css";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
+import PageTransition from "./components/PageTransition";
+import LandingPage from "./pages/LandingPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
+import SkillsPage from "./pages/SkillsPage";
 
-function App() {
-  const [loading, setLoading] = useState(true);
-  const [activeSection, setActiveSection] = useState("home");
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    // Intersection Observer for active sections
-    const sections = document.querySelectorAll("section[id]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.6 },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
-  }, []);
+function AppRoutes() {
+  const location = useLocation();
 
   return (
-    <>
-      <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              <LandingPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/experience"
+          element={
+            <PageTransition>
+              <ExperiencePage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <PageTransition>
+              <ProjectsPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/projects/:slug"
+          element={
+            <PageTransition>
+              <ProjectDetailPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/skills"
+          element={
+            <PageTransition>
+              <SkillsPage />
+            </PageTransition>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
-      {!loading && (
-        <div className="app">
-          <ParticleBackground />
-          <ScrollProgress />
-          <Navbar activeSection={activeSection} />
-          <main>
-            <Hero />
-            <About />
-            <Experience />
-            <Skills />
-            <Projects />
-            <Contact />
-          </main>
-          <Footer />
-        </div>
-      )}
-    </>
+function App() {
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light",
+  );
+  const [themeSwitching, setThemeSwitching] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    setThemeSwitching(true);
+    document.body.classList.add("theme-animating");
+
+    const settle = setTimeout(() => {
+      document.body.classList.remove("theme-animating");
+    }, 500);
+
+    const wipe = setTimeout(() => {
+      setThemeSwitching(false);
+    }, 520);
+
+    return () => {
+      clearTimeout(settle);
+      clearTimeout(wipe);
+    };
+  }, [theme]);
+
+  return (
+    <div className={`app-shell ${themeSwitching ? "theme-switching" : ""}`}>
+      <div className="theme-wipe" aria-hidden="true" />
+      <SiteHeader
+        theme={theme}
+        onToggleTheme={() =>
+          setTheme((current) => (current === "light" ? "dark" : "light"))
+        }
+      />
+      <main className="page-shell">
+        <AppRoutes />
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
 

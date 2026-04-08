@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 package-lock.json
+
+# Temp files
+*.tmp
+*.temp
+tmp/*
+temp/*

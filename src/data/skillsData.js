@@ -1,0 +1,86 @@
+export const skillsTree = {
+  root: "Build Map",
+  domains: [
+    {
+      name: "AI / ML",
+      summary: "Agentic AI and deep learning frameworks.",
+      skills: [
+        "LangChain",
+        "LangGraph",
+        "Groq API",
+        "TensorFlow",
+        "Keras",
+        "PyTorch",
+        "Scikit-learn",
+      ],
+    },
+    {
+      name: "Frontend",
+      summary: "Modern web UI libraries and frameworks.",
+      skills: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "React Router",
+      ],
+    },
+    {
+      name: "Backend",
+      summary: "Server-side frameworks and API development.",
+      skills: [
+        "FastAPI",
+        "Django",
+        "Express.js",
+        "Node.js",
+        "SQLAlchemy",
+        "REST APIs",
+      ],
+    },
+    {
+      name: "Data & ML Ops",
+      summary: "Data processing, visualization, and workflow tools.",
+      skills: [
+        "Pandas",
+        "NumPy",
+        "Plotly",
+        "Matplotlib",
+        "Jupyter",
+        "Scikit-learn",
+        "Feature Engineering",
+      ],
+    },
+    {
+      name: "Databases",
+      summary: "Relational, document, and vector databases.",
+      skills: [
+        "PostgreSQL",
+        "MySQL",
+        "SQLite",
+        "MongoDB",
+        "InfluxDB",
+        "Supabase",
+      ],
+    },
+    {
+      name: "DevOps & Tools",
+      summary: "Version control, containerization, and deployment.",
+      skills: ["Git", "GitHub", "Docker", "Postman", "Maven", "CI/CD"],
+    },
+    {
+      name: "Soft Skills",
+      summary: "Communication, leadership, and execution.",
+      skills: [
+        "Presentations",
+        "Public Speaking",
+        "Technical Writing",
+        "Team Leadership",
+        "Project Management",
+        "Mentoring",
+        "Event Planning",
+        "Community Building",
+      ],
+    },
+  ],
+};
