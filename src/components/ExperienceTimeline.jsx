@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 function getStartTimestamp(range) {
@@ -22,6 +22,8 @@ function ExperienceTimeline({ items }) {
     (a, b) => getStartTimestamp(b.dates) - getStartTimestamp(a.dates),
   );
   const [activeIndex, setActiveIndex] = useState(null);
+  const timelineWrapRef = useRef(null);
+  const nodeRefs = useRef([]);
   const active = activeIndex === null ? null : sortedItems[activeIndex];
 
   const closeModal = () => setActiveIndex(null);
@@ -43,6 +45,54 @@ function ExperienceTimeline({ items }) {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [activeIndex]);
+
+  useLayoutEffect(() => {
+    const wrap = timelineWrapRef.current;
+
+    if (!wrap) {
+      return undefined;
+    }
+
+    const updateConnectorLengths = () => {
+      const wrapRect = wrap.getBoundingClientRect();
+      const railTop = wrapRect.top + wrapRect.height / 2;
+
+      nodeRefs.current.forEach((node, index) => {
+        if (!node) {
+          return;
+        }
+
+        const card = node.querySelector(".timeline-node-card");
+
+        if (!card) {
+          return;
+        }
+
+        const cardRect = card.getBoundingClientRect();
+        const connectorLength =
+          index % 2 === 0
+            ? Math.max(0, railTop - cardRect.bottom)
+            : Math.max(0, cardRect.top - railTop);
+
+        node.style.setProperty("--connector-length", `${connectorLength}px`);
+      });
+    };
+
+    updateConnectorLengths();
+
+    const resizeObserver =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(updateConnectorLengths);
+
+    resizeObserver?.observe(wrap);
+    window.addEventListener("resize", updateConnectorLengths);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", updateConnectorLengths);
+    };
+  }, [sortedItems.length]);
 
   const modal = active ? (
     <div className="experience-modal-backdrop" onClick={closeModal}>
@@ -108,6 +158,7 @@ function ExperienceTimeline({ items }) {
     <section
       className="experience-timeline-wrap"
       aria-label="Experience timeline"
+      ref={timelineWrapRef}
     >
       <div className="timeline-rail" />
       <div
@@ -121,6 +172,9 @@ function ExperienceTimeline({ items }) {
             type="button"
             role="listitem"
             className={`timeline-node ${index % 2 === 0 ? "is-upper" : "is-lower"} ${index === activeIndex ? "is-active" : ""}`}
+            ref={(element) => {
+              nodeRefs.current[index] = element;
+            }}
             onClick={() => setActiveIndex(index)}
           >
             <span className="timeline-node-card">

@@ -699,6 +699,7 @@ a {
 
 .timeline-node {
   --timeline-offset: 0px;
+  --connector-offset: 4.7rem;
   --connector-length: 4.7rem;
   position: relative;
   text-align: left;
@@ -715,11 +716,11 @@ a {
 }
 
 .timeline-node.is-upper {
-  --timeline-offset: calc(-1 * var(--connector-length));
+  --timeline-offset: calc(-1 * var(--connector-offset));
 }
 
 .timeline-node.is-lower {
-  --timeline-offset: var(--connector-length);
+  --timeline-offset: var(--connector-offset);
 }
 
 .timeline-node-card {
@@ -1878,6 +1879,7 @@ a {
   .timeline-node.is-upper,
   .timeline-node.is-lower {
     --timeline-offset: 0;
+    --connector-offset: 0;
     --connector-length: 0;
   }
 
@@ -1985,12 +1987,7 @@ a {
   }
 
   .timeline-rail {
-    top: 0.4rem;
-    bottom: 0.4rem;
-    left: 0.9rem;
-    right: auto;
-    width: 1px;
-    height: auto;
+    display: none;
   }
 
   .timeline-nodes {
@@ -2002,16 +1999,12 @@ a {
   .timeline-node.is-upper,
   .timeline-node.is-lower {
     padding: 0;
-    padding-left: 1.7rem;
+    --connector-offset: 0;
+    --connector-length: 0;
   }
 
   .timeline-node-card::before {
-    display: block;
-    left: -0.8rem;
-    top: 50%;
-    width: 0.8rem;
-    height: 1px;
-    transform: none;
+    display: none;
   }
 
   .timeline-company {
