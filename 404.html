@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Arnav Karwa | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        var location = window.location;
+        var basePath = "/Portfolio/";
+        var route = location.pathname
+          .split("/")
+          .slice(2)
+          .join("/")
+          .replace(/^\/+|\/+$/g, "");
+
+        window.location.replace(
+          location.origin +
+            basePath +
+            "#/" +
+            route +
+            location.search +
+            location.hash,
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
